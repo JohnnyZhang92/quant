@@ -3,7 +3,7 @@ import datetime
 import akshare as ak
 import pandas as pd
 
-
+# 获取时需要关闭vpn
 def fetch_index_data(stock_dict, start_date, end_date = datetime.datetime.now().strftime("%Y%m%d")):
     """获取并合并指数数据"""
 
