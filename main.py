@@ -9,6 +9,7 @@ plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
 
 # 指数配置
+# 映射关系搜https://www.csindex.com.cn/zh-CN/indices/index-detail/H30374#/indices/family/list
 STOCK_DICT = {
     "000300": "沪深300",
     "000905": "中证500",
@@ -19,6 +20,7 @@ STOCK_DICT = {
     "931412": "证券30",
     "931643": "科创创业50",
     "000688": "科创50",
+    "000922": "中证红利",
 }
 
 
@@ -33,7 +35,7 @@ def main():
     final_df = reorder_columns(processed_data, STOCK_DICT)
 
     # 展示结果
-    plot_index_data(final_df, '沪深300')
+    plot_index_data(final_df, '中证红利')
 
 
 if __name__ == "__main__":
