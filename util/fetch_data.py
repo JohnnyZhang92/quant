@@ -1,6 +1,5 @@
 import datetime
 import akshare as ak
-import pandas as pd
 from stock_enum.stock_enum import StockEnum
 
 
