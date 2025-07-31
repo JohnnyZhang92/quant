@@ -1,27 +1,19 @@
 import datetime
-
 import akshare as ak
 import pandas as pd
+from stock_enum.stock_enum import StockEnum
 
 
 # 获取时需要关闭vpn
-def fetch_index_data(stock_dict, start_date, end_date=datetime.datetime.now().strftime("%Y%m%d")):
-    """获取并合并指数数据"""
-
-    result_df = pd.DataFrame()
-
-    for symbol, name in stock_dict.items():
+def fetch_index_data(stocks=StockEnum, start_date="20100101", end_date=datetime.datetime.now().strftime("%Y%m%d")):
+    result = {}
+    for stock in stocks:
         df = ak.stock_zh_index_hist_csindex(
-            symbol=symbol,
+            symbol=stock.value,
             start_date=start_date,
             end_date=end_date
         )
 
-        temp_df = df[['日期', '滚动市盈率', '收盘']].rename(
-            columns={'滚动市盈率': name, '收盘': f"{name}_收盘价"}
-        ).set_index('日期')
+        result[stock.name] = df
 
-        result_df = result_df.join(temp_df, how='outer') if not result_df.empty else temp_df
-
-    result_df.index = pd.to_datetime(result_df.index)
-    return result_df.sort_index()
+    return result
