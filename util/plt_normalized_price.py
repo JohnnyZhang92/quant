@@ -29,8 +29,14 @@ def plt_normalized_price(stocks=StockEnum):
 
 if __name__ == "__main__":
     stocks = [
-
-        StockEnum.医疗50,
         StockEnum.科创50,
+        # StockEnum.化工,
+        # StockEnum.全指信息,
+        StockEnum.医疗50,
+        # # StockEnum.半导体,
+        # StockEnum.恒生科技,
+        # StockEnum.证券30,
+        # StockEnum.中证2000,
+        StockEnum.煤炭,
     ]
     plt_normalized_price(stocks)

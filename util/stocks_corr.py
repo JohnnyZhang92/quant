@@ -18,7 +18,7 @@ def stocks_corr(stocks=StockEnum):
     merged_close = pd.concat(close_dfs, axis=1)
 
     # 排除有缺失的行
-    merged_close = merged_close.dropna()
+    # merged_close = merged_close.dropna()
 
     # 计算相关性
     corr_matrix = merged_close.corr().round(2)
@@ -28,14 +28,20 @@ def stocks_corr(stocks=StockEnum):
         if name == 'mean':
             continue
         value = StockEnum[name].value
-        print(f"{name} = \"{value}\"")
+        print(f"StockEnum.{name},")
     print(corr_matrix)
 
 
 if __name__ == "__main__":
-    stocks = []
-    for stock in StockEnum:
-        if stock in [StockEnum.科创50,StockEnum.科创创业50]:
-            continue
-        stocks.append(stock)
+    stocks = [
+        StockEnum.科创50,
+        # StockEnum.化工,
+        # StockEnum.全指信息,
+        StockEnum.医疗50,
+        # StockEnum.半导体,
+        StockEnum.恒生科技,
+        StockEnum.证券30,
+        StockEnum.中证2000,
+        StockEnum.煤炭,
+    ]
     stocks_corr(stocks)
